@@ -152,7 +152,7 @@ export default class QRCornerSquare {
     this._rotateFigure({
       ...args,
       draw: () => {
-        this._element = document.createElementNS(
+        this._element = this._window.document.createElementNS(
           "http://www.w3.org/2000/svg",
           "path"
         );
@@ -209,7 +209,7 @@ export default class QRCornerSquare {
       ...args,
       draw: () => {
         // Create the main shape path
-        const path = document.createElementNS(
+        const path = this._window.document.createElementNS(
           "http://www.w3.org/2000/svg",
           "path"
         );
@@ -234,7 +234,7 @@ export default class QRCornerSquare {
         this._element = path;
 
         // Create the inner square path
-        const innerPath = document.createElementNS(
+        const innerPath = this._window.document.createElementNS(
           "http://www.w3.org/2000/svg",
           "path"
         );
@@ -258,7 +258,7 @@ export default class QRCornerSquare {
         innerPath.setAttribute("stroke-width", "1"); // Set the stroke width
 
         // Append the elements to the SVG container
-        const svgContainer = document.querySelector("svg"); // Adjust this selector to match your SVG container
+        const svgContainer = this._window.document.querySelector("svg"); // Adjust this selector to match your SVG container
         if (svgContainer) {
           svgContainer.appendChild(this._element);
           svgContainer.appendChild(innerPath);
@@ -279,7 +279,7 @@ export default class QRCornerSquare {
       ...args,
       draw: () => {
         // Create the main shape path
-        const path = document.createElementNS(
+        const path = this._window.document.createElementNS(
           "http://www.w3.org/2000/svg",
           "path"
         );
@@ -304,7 +304,7 @@ export default class QRCornerSquare {
         this._element = path;
 
         // Create the inner square path
-        const innerPath = document.createElementNS(
+        const innerPath = this._window.document.createElementNS(
           "http://www.w3.org/2000/svg",
           "path"
         );
@@ -328,7 +328,7 @@ export default class QRCornerSquare {
         innerPath.setAttribute("stroke-width", "1"); // Set the stroke width
 
         // Append the elements to the SVG container
-        const svgContainer = document.querySelector("svg"); // Adjust this selector to match your SVG container
+        const svgContainer = this._window.document.querySelector("svg"); // Adjust this selector to match your SVG container
         if (svgContainer) {
           svgContainer.appendChild(this._element);
           svgContainer.appendChild(innerPath);
@@ -345,7 +345,7 @@ export default class QRCornerSquare {
     this._rotateFigure({
       ...args,
       draw: () => {
-        this._element = document.createElementNS(
+        this._element = this._window.document.createElementNS(
           "http://www.w3.org/2000/svg",
           "path"
         );
@@ -376,7 +376,7 @@ export default class QRCornerSquare {
       ...args,
       draw: () => {
         // Create the main shape path
-        const path = document.createElementNS(
+        const path = this._window.document.createElementNS(
           "http://www.w3.org/2000/svg",
           "path"
         );
@@ -400,7 +400,7 @@ export default class QRCornerSquare {
         this._element = path;
 
         // Create the white rounded dot with flat corner
-        const smallDot = document.createElementNS(
+        const smallDot = this._window.document.createElementNS(
           "http://www.w3.org/2000/svg",
           "circle"
         );
@@ -411,7 +411,7 @@ export default class QRCornerSquare {
         smallDot.setAttribute("stroke", "none"); // No stroke
 
         // Append both elements to the SVG container
-        const svgContainer = document.querySelector("svg"); // Adjust this selector to match your SVG container
+        const svgContainer = this._window.document.querySelector("svg"); // Adjust this selector to match your SVG container
         if (svgContainer) {
           svgContainer.appendChild(this._element);
           svgContainer.appendChild(smallDot);
@@ -430,7 +430,7 @@ export default class QRCornerSquare {
       ...args,
       draw: () => {
         // Create the main shape path
-        const path = document.createElementNS(
+        const path = this._window.document.createElementNS(
           "http://www.w3.org/2000/svg",
           "path"
         );
@@ -454,7 +454,7 @@ export default class QRCornerSquare {
         this._element = path;
 
         // Create the white rounded dot with flat corner
-        const smallDot = document.createElementNS(
+        const smallDot = this._window.document.createElementNS(
           "http://www.w3.org/2000/svg",
           "circle"
         );
@@ -465,7 +465,7 @@ export default class QRCornerSquare {
         smallDot.setAttribute("stroke", "none"); // No stroke
 
         // Append both elements to the SVG container
-        const svgContainer = document.querySelector("svg"); // Adjust this selector to match your SVG container
+        const svgContainer = this._window.document.querySelector("svg"); // Adjust this selector to match your SVG container
         if (svgContainer) {
           svgContainer.appendChild(this._element);
           svgContainer.appendChild(smallDot);
@@ -487,7 +487,7 @@ export default class QRCornerSquare {
       rotation: 0,
       draw: () => {
         // Create the main shape path
-        const path = document.createElementNS(
+        const path = this._window.document.createElementNS(
           "http://www.w3.org/2000/svg",
           "path"
         );
@@ -510,10 +510,10 @@ export default class QRCornerSquare {
         path.setAttribute("fill", "white"); // Set fill to white
         path.setAttribute("stroke", "black"); // Set the stroke color
         path.setAttribute("stroke-width", "1"); // Set the stroke width
-        this._element = path;
+
 
         // Create the inner square path
-        const innerPath = document.createElementNS(
+        const innerPath = this._window.document.createElementNS(
           "http://www.w3.org/2000/svg",
           "path"
         );
@@ -536,12 +536,9 @@ export default class QRCornerSquare {
         innerPath.setAttribute("fill", "white"); // Set fill to white for the inner square
         innerPath.setAttribute("stroke", "black"); // Set the stroke color
         innerPath.setAttribute("stroke-width", "0"); // Set the stroke width
-
+        this._element = path;
         // Append the elements to the SVG container
-        const svgContainer = document.querySelector("svg"); // Adjust this selector to match your SVG container
-        if (svgContainer) {
-          this._svg.appendChild(innerPath);
-        }
+        this._svg.appendChild(innerPath);
       },
     });
   }

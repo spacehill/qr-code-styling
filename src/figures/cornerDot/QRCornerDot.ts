@@ -227,7 +227,7 @@ export default class QRCornerDot {
       rotation: 0,
       draw: () => {
         // Create the main shape path
-        const path = document.createElementNS(
+        const path = this._window.document.createElementNS(
           "http://www.w3.org/2000/svg",
           "path"
         );
