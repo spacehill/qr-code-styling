@@ -1,8 +1,8 @@
 # IDEA
 .idea
 
-# Lib folder
-/lib
+# Lib folder  ! disabled to make it installable via github actions
+# /lib
 
 # npm modules
 /node_modules
