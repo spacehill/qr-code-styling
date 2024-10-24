@@ -476,14 +476,15 @@ export default class QRCornerSquare {
 
   _basicPeanutShape(args: BasicFigureDrawArgs): void {
     const { size, x, y } = args;
-    const radius = size / 3.7; // Adjust this value to control the rounding radius
+    const radius = size / 2.5; // Adjust this value to control the rounding radius
     const innerSquareSize = size / 1.4; // Size of the inner square
-    const innerSquareRadius = innerSquareSize / 3.7; // Radius for the inner square
+    const innerSquareRadius = innerSquareSize / 2.5; // Radius for the inner square
     const innerX = x + (size - innerSquareSize) / 2; // X position for the inner square
     const innerY = y + (size - innerSquareSize) / 2; // Y position for the inner square
 
     this._rotateFigure({
       ...args,
+      rotation: 0,
       draw: () => {
         // Create the main shape path
         const path = document.createElementNS(
@@ -534,13 +535,12 @@ export default class QRCornerSquare {
         );
         innerPath.setAttribute("fill", "white"); // Set fill to white for the inner square
         innerPath.setAttribute("stroke", "black"); // Set the stroke color
-        innerPath.setAttribute("stroke-width", "1"); // Set the stroke width
+        innerPath.setAttribute("stroke-width", "0"); // Set the stroke width
 
         // Append the elements to the SVG container
         const svgContainer = document.querySelector("svg"); // Adjust this selector to match your SVG container
         if (svgContainer) {
-          svgContainer.appendChild(this._element);
-          svgContainer.appendChild(innerPath);
+          this._svg.appendChild(innerPath);
         }
       },
     });

@@ -48,6 +48,9 @@ export default class QRCornerDot {
       case cornerDotTypes.rightBottomCircle:
         drawFunction = this._drawCircleRightBottomEdge;
         break;
+      case cornerDotTypes.peanut:
+        drawFunction = this._drawPeanutShape;
+        break;
       case cornerDotTypes.diamond:
         drawFunction = this._drawDiamond;
         break;
@@ -214,6 +217,44 @@ export default class QRCornerDot {
   //     },
   //   });
   // }
+
+  _basicPeanutShape(args: BasicFigureDrawArgs): void {
+    const { size, x, y } = args;
+    const radius = size / 2.5; // Adjust this value to control the rounding radius
+
+    this._rotateFigure({
+      ...args,
+      rotation: 0,
+      draw: () => {
+        // Create the main shape path
+        const path = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path"
+        );
+        path.setAttribute("clip-rule", "evenodd");
+        path.setAttribute(
+          "d",
+          `M ${x + radius} ${y}` + // Start at the top-left flat edge
+          `H ${x + size - radius}` + // Draw a horizontal line to the right
+          `a ${radius} ${radius} 0 0 1 ${radius} ${radius}` + // Draw the top-right arc
+          `V ${y + size - radius}` + // Draw a vertical line down to the bottom-right flat edge
+          `H ${x + size}` + // Move to the bottom-right flat edge
+          `V ${y + size}` + // Draw a vertical line down to the bottom
+          `H ${x + radius}` + // Draw a horizontal line to the left
+          `a ${radius} ${radius} 0 0 1 -${radius} -${radius}` + // Draw the bottom-left arc
+          `V ${y + radius}` + // Draw a vertical line up to the starting point
+          `H ${x}` + // Move to the top-left flat edge
+          `V ${y}` + // Draw a vertical line up to the top
+          `Z` // Close the path
+        );
+        path.setAttribute("fill", "white"); // Set fill to white
+        path.setAttribute("stroke", "black"); // Set the stroke color
+        path.setAttribute("stroke-width", "1"); // Set the stroke width
+        this._element = path;
+
+      },
+    });
+  }
 
   _basicCircleLeftTopEdge(args: BasicFigureDrawArgs): void {
     const { size, x, y } = args;
@@ -587,5 +628,8 @@ export default class QRCornerDot {
 
   _drawRhombus({ x, y, size, rotation }: DrawArgs): void {
     this._basicRhombus({ x, y, size, rotation });
+  }
+  _drawPeanutShape({ x, y, size, rotation }: DrawArgs): void {
+    this._basicPeanutShape({ x, y, size, rotation });
   }
 }

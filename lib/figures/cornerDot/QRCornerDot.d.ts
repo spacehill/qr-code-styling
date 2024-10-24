@@ -16,6 +16,7 @@ export default class QRCornerDot {
     _basicRoundedSquare(args: BasicFigureDrawArgs): void;
     _basicRoundedSquareRightBottomEdge(args: BasicFigureDrawArgs): void;
     _basicLeaf(args: BasicFigureDrawArgs): void;
+    _basicPeanutShape(args: BasicFigureDrawArgs): void;
     _basicCircleLeftTopEdge(args: BasicFigureDrawArgs): void;
     _basicCircleRightBottomEdge(args: BasicFigureDrawArgs): void;
     _basicDiamond(args: BasicFigureDrawArgs): void;
@@ -35,4 +36,5 @@ export default class QRCornerDot {
     _drawDiamond({ x, y, size, rotation }: DrawArgs): void;
     _drawCross({ x, y, size, rotation }: DrawArgs): void;
     _drawRhombus({ x, y, size, rotation }: DrawArgs): void;
+    _drawPeanutShape({ x, y, size, rotation }: DrawArgs): void;
 }

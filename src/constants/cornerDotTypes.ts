@@ -12,5 +12,6 @@ export default {
   rightBottomCircle: "circle-right-bottom",
   diamond: "diamond",
   cross: "cross",
-  rhombus: "rhombus"
+  rhombus: "rhombus",
+  peanut: "peanut"
 } as CornerDotTypes;
